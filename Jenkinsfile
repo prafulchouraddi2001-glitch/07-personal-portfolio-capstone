@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment {
-        PORTFOLIO_IMAGE = 'portfolio-capstone:jenkins-' + env.BUILD_NUMBER
+        PORTFOLIO_IMAGE = "portfolio-capstone:jenkins-${BUILD_NUMBER}"
     }
 
     stages {
