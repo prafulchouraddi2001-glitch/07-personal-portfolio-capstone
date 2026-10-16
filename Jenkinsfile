@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'jenkins-agent-2'
+        label 'jenkins-agent'
     }
 
     options {
