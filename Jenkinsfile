@@ -26,13 +26,15 @@ pipeline {
         stage('Validate Frontend') {
             steps {
                 sh '''
-                    docker run --rm \
-                        -v "/tmp/portfolio-capstone-${BUILD_NUMBER}:/app" \
-                        -w /app node:24-alpine sh -lc '
-                            npm ci &&
-                            npm run lint &&
-                            npm run build
-                        '
+                    cd "/tmp/portfolio-capstone-${BUILD_NUMBER}"
+                    tar -czf - package.json package-lock.json src public index.html vite.config.js eslint.config.js | docker run --rm -i node:24-alpine sh -lc '
+                        mkdir -p /app &&
+                        tar -xzf - -C /app &&
+                        cd /app &&
+                        npm ci &&
+                        npm run lint &&
+                        npm run build
+                    '
                 '''
             }
         }
