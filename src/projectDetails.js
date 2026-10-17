@@ -171,7 +171,7 @@ export const projectDetails = [
       "Plan and validation results",
       "S3 remote-state configuration"
     ],
-    repository: "https://github.com/prafulchouraddi2001-glitch/04-terraform-aws-infrastructure"
+    repository: "https://github.com/prafulchouraddi2001-glitch/-04-terraform-aws-infrastructure"
   },
   {
     number: "05",
