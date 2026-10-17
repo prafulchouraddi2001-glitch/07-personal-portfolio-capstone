@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: portfolio-capstone:1.0.0
+          image: portfolio-capstone:jenkins-9
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
