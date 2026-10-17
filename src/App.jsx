@@ -311,6 +311,13 @@ function App() {
             >
               GitHub profile <span>↗</span>
             </a>
+            <a
+              className="button button-secondary"
+              href="/resume.pdf"
+              download="Praful_Chouraddi_DevOps_Resume.pdf"
+            >
+              Download Resume <span>↓</span>
+            </a>
           </div>
           <p className="contact-note">
             Open to DevOps Engineer opportunities. Connect with me on GitHub.
