@@ -215,7 +215,7 @@ function App() {
             ))}
           </div>
           <p className="projects-footnote">
-            Project cards describe completed work. Repository links will be added after the repositories are published.
+            Explore my completed DevOps projects, from Docker and AWS to CI/CD, Terraform, Ansible, and Kubernetes monitoring.
           </p>
         </section>
 
@@ -225,10 +225,10 @@ function App() {
             <h2>One portfolio.<br /><span>End-to-end DevOps.</span></h2>
           </div>
           <div className="next-steps">
-            <p>01 <span>React + Vite portfolio</span><b>IN PROGRESS</b></p>
-            <p>02 <span>Docker image & container</span><b>UP NEXT</b></p>
-            <p>03 <span>Jenkins CI/CD pipeline</span><b>PLANNED</b></p>
-            <p>04 <span>Kubernetes deployment</span><b>PLANNED</b></p>
+            <p>01 <span>React + Vite portfolio</span><b>COMPLETED</b></p>
+            <p>02 <span>Docker image & container</span><b>COMPLETED</b></p>
+            <p>03 <span>Jenkins CI/CD pipeline</span><b>COMPLETED</b></p>
+            <p>04 <span>Kubernetes deployment</span><b>COMPLETED</b></p>
           </div>
         </section>
 
@@ -239,11 +239,11 @@ function App() {
             I'm looking for an opportunity to contribute, keep learning,
             and grow with an engineering team.
           </p>
-          <a className="button button-primary" href="mailto:your-email@example.com">
+          <a className="button button-primary" href="mailto:prafulchouraddi2001@gmail.com">
             Email me <span>↗</span>
           </a>
           <p className="contact-note">
-            Replace the placeholder email and add your real profile links before publishing.
+            Open to DevOps Engineer opportunities. Connect with me on GitHub.
           </p>
         </section>
       </main>
