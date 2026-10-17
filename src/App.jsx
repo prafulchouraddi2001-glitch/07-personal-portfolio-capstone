@@ -169,7 +169,7 @@ function App() {
               <div className="terminal-table">
                 <span>NAME</span><span>STATUS</span>
                 <span>devops-labs</span><span className="terminal-green">ready</span>
-                <span>portfolio</span><span className="terminal-yellow">building</span>
+                <span>portfolio</span><span className="terminal-green">deployed</span>
               </div>
               <p className="terminal-prompt"><span className="terminal-green">➜</span> <span className="cursor">▋</span></p>
             </div>

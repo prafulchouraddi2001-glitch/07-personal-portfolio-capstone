@@ -104,6 +104,15 @@ Verify the application through the Kubernetes Service:
 kubectl --context kind-devops-k8s run portfolio-check --rm -i --restart=Never --image=curlimages/curl:latest -- curl -fsS -o /dev/null -w 'HTTP Status: %{http_code}\n' http://portfolio/
 ```
 
+The dedicated health endpoint was also verified successfully from inside the cluster:
+
+```text
+healthy
+HTTP Status: 200
+```
+
+The Deployment uses `/health` as its readiness probe, and both replicas were ready after the successful rollout.
+
 These commands assume the existing `devops-k8s` kind cluster and its context are available. For a different cluster, update the context and image-loading steps accordingly.
 
 ## Jenkins CI Pipeline
@@ -114,7 +123,7 @@ The `Jenkinsfile` defines the pipeline stages:
 2. **Validate Frontend:** Run `npm ci`, `npm run lint`, and `npm run build`.
 3. **Build Docker Image:** Build and inspect a uniquely tagged Docker image.
 
-The verified Jenkins build produced `portfolio-capstone:jenkins-3`. The image was then loaded into kind and deployed through a separate rollout.
+The verified Jenkins build produced `portfolio-capstone:jenkins-9`. The image was then loaded into kind and deployed through a separate rollout.
 
 The Jenkins agent requires Git, Docker CLI access to the intended Docker engine, and network access to the public GitHub repository and container registry.
 
