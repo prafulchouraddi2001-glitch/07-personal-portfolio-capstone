@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'jenkins-agent'
+        label 'docker-enabled-agent'
     }
 
     options {
@@ -26,14 +26,13 @@ pipeline {
         stage('Validate Frontend') {
             steps {
                 sh '''
-                    docker run --rm node:24-alpine sh -lc '
-                        apk add --no-cache git &&
-                        git clone --depth 1 --branch main https://github.com/prafulchouraddi2001-glitch/07-personal-portfolio-capstone.git /tmp/portfolio &&
-                        cd /tmp/portfolio &&
-                        npm ci &&
-                        npm run lint &&
-                        npm run build
-                    '
+                    docker run --rm \
+                        -v "/tmp/portfolio-capstone-${BUILD_NUMBER}:/app" \
+                        -w /app node:24-alpine sh -lc '
+                            npm ci &&
+                            npm run lint &&
+                            npm run build
+                        '
                 '''
             }
         }
@@ -42,7 +41,7 @@ pipeline {
             steps {
                 sh '''
                     cd "/tmp/portfolio-capstone-${BUILD_NUMBER}"
-                    tar -czf - .dockerignore Dockerfile package.json package-lock.json src public index.html vite.config.js eslint.config.js | docker build -t "$PORTFOLIO_IMAGE" -
+                    tar -czf - .dockerignore Dockerfile nginx package.json package-lock.json src public index.html vite.config.js eslint.config.js | docker build -t "$PORTFOLIO_IMAGE" -
                     docker image inspect "$PORTFOLIO_IMAGE" --format 'Image built successfully: {{.Id}}'
                 '''
             }
