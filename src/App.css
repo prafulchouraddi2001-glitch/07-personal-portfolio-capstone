@@ -798,3 +798,157 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Project case-study views */
+.project-card-button {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.project-card-button:focus-visible {
+  outline: 2px solid var(--accent, #65e6d5);
+  outline-offset: 4px;
+}
+
+.project-card-title {
+  display: block;
+  margin-top: 22px;
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.project-card-description {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted-text, #a8b5c7);
+  line-height: 1.7;
+}
+
+.project-card-hint {
+  display: block;
+  margin-top: auto;
+  padding-top: 22px;
+  color: #78e6d6;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.project-detail {
+  width: min(100% - 40px, 1000px);
+  margin: 0 auto;
+  padding-top: 54px;
+  padding-bottom: 90px;
+}
+
+.project-detail > .eyebrow {
+  margin-top: 48px;
+}
+
+.project-detail > h1 {
+  margin: 12px 0 18px;
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.project-detail-summary {
+  max-width: 720px;
+  color: var(--muted-text, #a8b5c7);
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.detail-section {
+  margin-top: 44px;
+  padding: 28px;
+  border: 1px solid #26364a;
+  border-radius: 10px;
+  background: var(--panel, #111d2c);
+}
+
+.detail-section h2 {
+  margin: 0 0 18px;
+  font-size: 1.35rem;
+}
+
+.detail-section p,
+.detail-section li {
+  color: var(--muted-text, #a8b5c7);
+  line-height: 1.85;
+}
+
+.detail-section ol,
+.detail-section ul {
+  display: grid;
+  gap: 12px;
+  padding-left: 24px;
+}
+
+.detail-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.detail-tool,
+.detail-command {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #26364a;
+  border-radius: 8px;
+  background: rgba(5, 13, 25, 0.35);
+}
+
+.detail-tool h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.detail-tool p,
+.detail-command p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+}
+
+.detail-commands {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-command pre {
+  overflow-x: auto;
+  margin: 0 0 12px;
+  padding: 14px;
+  border-radius: 6px;
+  background: #07111f;
+  color: #83e9da;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.detail-repository .button {
+  display: inline-flex;
+  margin-top: 12px;
+}
+
+@media (max-width: 624px) {
+  .project-detail {
+    width: min(100% - 28px, 1000px);
+    padding-top: 32px;
+  }
+
+  .detail-section {
+    margin-top: 24px;
+    padding: 20px;
+  }
+
+  .project-detail > .eyebrow {
+    margin-top: 34px;
+  }
+}

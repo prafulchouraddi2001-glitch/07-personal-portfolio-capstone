@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import './App.css'
+import ProjectDetail from './ProjectDetail'
+import { projectDetails } from './projectDetails'
 
 const skills = {
   "Operating Systems": ["Linux", "Bash"],
@@ -54,6 +57,53 @@ const projects = [
 ]
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState(() => {
+    const slug = window.location.hash.replace('#project/', '')
+    return projectDetails.find((project) => project.slug === slug) ?? null
+  })
+
+  useEffect(() => {
+    const syncProjectFromHash = () => {
+      const slug = window.location.hash.startsWith('#project/')
+        ? window.location.hash.slice('#project/'.length)
+        : ''
+      setSelectedProject(
+        projectDetails.find((project) => project.slug === slug) ?? null
+      )
+    }
+
+    window.addEventListener('hashchange', syncProjectFromHash)
+    return () => window.removeEventListener('hashchange', syncProjectFromHash)
+  }, [])
+
+  const openProject = (project) => {
+    window.location.hash = `project/${project.slug}`
+  }
+
+  const closeProject = () => {
+    window.location.hash = 'projects'
+  }
+  if (selectedProject) {
+    return (
+      <div className="portfolio">
+        <header className="navbar">
+          <a className="brand" href="#home" aria-label="Praful home">
+            <span className="brand-mark">P<span>.</span></span>
+            <span>praful<span className="muted">.dev</span></span>
+          </a>
+          <nav aria-label="Project navigation">
+            <a href="#projects" onClick={closeProject}>All projects</a>
+          </nav>
+        </header>
+        <ProjectDetail project={selectedProject} onBack={closeProject} />
+        <footer className="footer">
+          <a className="back-top" href="#projects" onClick={closeProject}>ALL PROJECTS ↑</a>
+          <p>Designed to learn. Built to automate.</p>
+        </footer>
+      </div>
+    )
+  }
+
   return (
     <div className="portfolio">
       <header className="navbar">
@@ -201,17 +251,27 @@ function App() {
 
           <div className="projects-grid">
             {projects.map((project) => (
-              <article className="project-card" key={project.number}>
-                <div className="project-card-top">
+              <button
+                className="project-card project-card-button"
+                key={project.number}
+                type="button"
+                onClick={() => {
+                  const detail = projectDetails.find((item) => item.number === project.number)
+                  if (detail) openProject(detail)
+                }}
+                aria-label={`View case study: ${project.title}`}
+              >
+                <span className="project-card-top">
                   <span className="project-number">{project.number}</span>
                   <span className="project-arrow">↗</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="tags">
+                </span>
+                <span className="project-card-title">{project.title}</span>
+                <span className="project-card-description">{project.description}</span>
+                <span className="tags">
                   {project.stack.map((item) => <span className="tag" key={item}>{item}</span>)}
-                </div>
-              </article>
+                </span>
+                <span className="project-card-hint">EXPLORE CASE STUDY →</span>
+              </button>
             ))}
           </div>
           <p className="projects-footnote">
