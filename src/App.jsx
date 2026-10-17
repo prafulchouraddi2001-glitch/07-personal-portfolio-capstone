@@ -299,9 +299,19 @@ function App() {
             I'm looking for an opportunity to contribute, keep learning,
             and grow with an engineering team.
           </p>
-          <a className="button button-primary" href="mailto:prafulchouraddi2001@gmail.com">
-            Email me <span>↗</span>
-          </a>
+          <div className="hero-actions">
+            <a className="button button-primary" href="mailto:prafulchouraddi2001@gmail.com">
+              Email me <span>↗</span>
+            </a>
+            <a
+              className="button button-secondary"
+              href="https://github.com/prafulchouraddi2001-glitch"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub profile <span>↗</span>
+            </a>
+          </div>
           <p className="contact-note">
             Open to DevOps Engineer opportunities. Connect with me on GitHub.
           </p>
